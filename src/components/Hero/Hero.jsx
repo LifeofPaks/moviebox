@@ -2,15 +2,17 @@ import React from "react";
 import "./Hero.scss";
 import NavBar from "../NavBar/NavBar";
 
-const Hero = ({ movies, setMovies, setError, selectedMovies, isLoading }) => {
+
+const Hero = ({ movies, setMovies, setError, selectedMovies, isLoading, setIsLoading }) => {
   const IMAGE_PATH = `https://image.tmdb.org/t/p/original`;
 
   return (
     <header
       className={`hero ${isLoading ? "black" : ""}`}
       style={{ backgroundImage: `url('${IMAGE_PATH}${selectedMovies.backdrop_path}')` }}
+      
     >
-      <NavBar movies={movies} setMovies={setMovies} setError={setError} />
+      <NavBar movies={movies} setMovies={setMovies} setError={setError} setIsLoading={setIsLoading} isLoading={isLoading}/>
       {!isLoading ? (
         <div className="movieDetails">
           <h1 className="title">{selectedMovies.title}</h1>
@@ -36,6 +38,8 @@ const Hero = ({ movies, setMovies, setError, selectedMovies, isLoading }) => {
         </div> 
         
       ) : ''}
+
+      <div className="overlay"></div>
     </header>
   );
 };

@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,300&display=swap');
 @import "animate.css";
 @import 'loaders.css/src/animations/ball-clip-rotate.scss';
+@import './components/./styles/Responsive.scss';
 
 *{
     padding: 0;
@@ -43,6 +44,7 @@ li{
     margin: auto;
     animation: fadeOut 1s 1.5s;
     animation-fill-mode: forwards;
+    z-index: 20;
   }
   .main{
    
@@ -51,10 +53,29 @@ li{
     justify-content: center;
     padding: 5rem 2rem;
 
+    @include Tablet{
+        padding: 2rem 2rem;
+    }
+
+    @include Mobile{
+        padding: 1rem 1rem;
+    }
+ 
+
     .movies{
         display: grid;
         grid-template-columns: repeat(4, 1fr);
         column-gap: 5rem;
-        row-gap: 80px;
+        row-gap: 3rem;
         padding-inline: 5rem;
+
+        @include Tablet{
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        @include Mobile{
+            grid-template-columns: repeat(1, 1fr);
+        }
+        
+        
     }}  

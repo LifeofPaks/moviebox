@@ -5,12 +5,15 @@ import axios from "axios";
 // import Main from "./components/Main/Main";
 import Loader from "react-loaders";
 import MovieCard from "./components/MovieCard/MovieCard";
+import { Route, Routes } from "react-router-dom";
+import MovieInfo from "./components/MovieInfo/MovieInfo";
 
 function App() {
   const [movies, setMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
   const [selectedMovies, setSelectedMovies] = useState({});
+  const [showDetails, setShowDetails] = useState(false)
 
   const API_URL = `https://api.themoviedb.org/3/discover/movie?api_key=14fafd0c8dac1e1c2ab6222eeb3a9da0`;
 
@@ -24,7 +27,6 @@ function App() {
         setMovies(results);
         setIsLoading(false);
         setSelectedMovies(results[0]);
-        console.log(results[0]);
       } catch (e) {
         setError(`${e.message}`);
         setMovies([]);
@@ -46,11 +48,7 @@ function App() {
         selectedMovies={selectedMovies}
         isLoading={isLoading}
       />
-      {/* <Main
-        movies={movies}
-        isLoading={isLoading}
-        setSelectedMovies={setSelectedMovies}
-      /> */}
+
       <section className="main">
         {isLoading && <Loader type="ball-clip-rotate" />}
         <div className="movies">
@@ -59,10 +57,22 @@ function App() {
               key={movie.id}
               movie={movie}
               setSelectedMovies={setSelectedMovies}
-            />
-          ))}
+              setShowDetails={setShowDetails}
+              />
+              ))}
         </div>
       </section>
+
+        <MovieInfo
+           movies={movies}
+           setMovies={setMovies}
+           setError={setError}
+           setIsLoading={setIsLoading}
+           selectedMovies={selectedMovies}
+           isLoading={isLoading}
+           showDetails={showDetails}
+           setShowDetails={setShowDetails}
+        />
     </main>
   );
 }

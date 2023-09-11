@@ -1,0 +1,110 @@
+@import '../styles/Responsive.scss';
+
+.info{
+    position: fixed;
+    width: 100%;
+    left: 0;
+    height: 100vh;
+    background: #000;
+    z-index: 100;
+    bottom: 0;
+    display: flex;
+    color: #fff;
+    padding: 3rem;
+
+    @include Tablet{
+        padding: 1rem;
+    }
+    
+    @include Mobile{
+        padding: 1rem;
+    }
+
+    @include Tablet{
+
+    }
+    
+    @include Mobile{
+    
+    }
+
+    .poster{
+        width: 100%;
+
+        @include Tablet{
+            height: 400px;
+        }
+        
+        @include Mobile{
+        height: 300px;
+        }
+    }
+
+    .close{
+        color: #fff;
+        position: absolute;
+        right: 5em;
+        top: 5rem;
+
+        @include Tablet{
+            right: 3em;
+            top: 3rem;
+        }
+        
+        @include Mobile{
+            right: 2em;
+            top: 2rem;
+        }  
+    }
+
+    .title{
+        font-size: 7rem;
+
+        @include Tablet{
+            font-size: 5rem;
+        }
+        
+        @include Mobile{
+            font-size: 2rem;
+        }
+
+    }
+
+    .movieDetails{
+        position: absolute;
+        left: 5rem;
+
+        @include Tablet{
+            bottom: 1rem;
+            left: 2rem;
+        }
+        
+        @include Mobile{
+            bottom: 1rem;
+            left: 2rem;
+        }       
+
+       .left{
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+
+       } 
+
+       .overview{
+        width: 400px;
+        line-height: 25px;
+
+        
+        @include Mobile{
+            width: 100%;
+            padding-right: 1rem;
+        }  
+       }
+
+       .releaseDate{
+        margin-top: 2rem;
+        font-size: 14px;
+       }
+    }
+}

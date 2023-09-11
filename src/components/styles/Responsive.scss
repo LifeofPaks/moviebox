@@ -5,3 +5,11 @@ $Mobile : 475px;
         @content
     }
 }
+
+$Tablet : 768px;
+
+@mixin Tablet{
+    @media screen and (max-width: ($Tablet)){
+        @content
+    }
+}

@@ -1,9 +1,61 @@
-@import '../styles/Responsive.scss';
+@import "../styles/Responsive.scss";
 
-.movieCard{
+.card {
+  position: relative;
+  .movieCard {
     cursor: pointer;
-    img{
-        width: 250px;
-        height: 370px;
+    box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.1);
+    border-radius: 0.5rem;
+    color: #333;
+    width: 250px;
+    opacity: 0;
+    animation: fadeIn 2s 1s forwards;
+
+    .poster,
+    .no-image {
+      width: 250px;
+      height: 350px;
     }
+
+    .detailsWrapper {
+      padding: 1rem;
+
+      h5 {
+        font-size: 16px;
+        width: 200px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .left {
+        display: flex;
+        align-items: center;
+        gap: 18px;
+        img {
+          width: 35px;
+        }
+
+        p {
+          font-size: 12px;
+        }
+      }
+    }
+
+    .releaseDate {
+      font-weight: 500;
+      font-size: 13px;
+    }
+  }
+  .more {
+    padding: 0.5rem 1rem;
+    background: #fff;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+    position: absolute;
+    z-index: 100;
+    bottom: 1rem;
+    right: 1rem;
+    border-radius: 10px;
+    font-size: 12px;
+  }
 }
