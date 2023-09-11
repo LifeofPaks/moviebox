@@ -26,7 +26,7 @@ const MovieInfo = ({ showDetails, selectedMovies, setShowDetails }) => {
         </div>
 
         <button onClick={()=> setShowDetails(false)} className="close">
-        <img width="20"src="https://img.icons8.com/ios-glyphs/90/FFFFFF/delete-sign.png" alt="delete-sign"/>
+        <img width="20" src="https://img.icons8.com/ios-glyphs/90/FFFFFF/delete-sign.png" alt="delete-sign"/>
         </button>
       </div>
     )
