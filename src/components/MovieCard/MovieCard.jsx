@@ -1,18 +1,16 @@
 import React from "react";
 import "./MovieCard.scss";
 
-const MovieCard = ({ movie, setSelectedMovies, setShowDetails }) => {
+const MovieCard = ({ movie, setSelectedMovies, setShowDetails, isLoading, error }) => {
 
   const IMAGE_PATH = "https://image.tmdb.org/t/p/w500";
   const handleMovieDetails = () =>{
     setShowDetails(true)
     setSelectedMovies(movie)
   }
-  return (
-
-    
-
+  return ( !isLoading && movie ?
     <div className="card">
+      
     <div className="movieCard" onClick={() => setSelectedMovies(movie)}  data-testid= 'movie-card'>
       {movie.poster_path ? (
         <img src={`${IMAGE_PATH}${movie.poster_path}`} alt="poster" data-testid= 'movie-poster' className="poster"/>
@@ -37,7 +35,7 @@ const MovieCard = ({ movie, setSelectedMovies, setShowDetails }) => {
   
     </div>
       <button onClick={handleMovieDetails} className="more">More details</button>
-    </div>
+    </div> : ''
   );
 };
 

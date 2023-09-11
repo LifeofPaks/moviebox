@@ -5,7 +5,7 @@ import Menu from "../../images/Menu alt 4.svg";
 import axios from "axios";
 import Loader from "react-loaders";
 
-const NavBar = ({ setMovies, setError, setIsLoading, isLoading }) => {
+const NavBar = ({ setMovies, setError, setIsLoading, isLoading, error }) => {
   const [search, setSearch] = useState("");
 
   const API_URL = `https://api.themoviedb.org/3/search/movie?query=${search}&api_key=14fafd0c8dac1e1c2ab6222eeb3a9da0`;
@@ -18,8 +18,8 @@ const NavBar = ({ setMovies, setError, setIsLoading, isLoading }) => {
       } = await axios.get(`${API_URL}`);
       setMovies(results);
     } catch (e) {
-      setError(`${e.message}`);
-      setMovies([]);
+        setMovies([]);
+        setError(`${e.message}`);
     }
   };
 
@@ -61,6 +61,7 @@ const NavBar = ({ setMovies, setError, setIsLoading, isLoading }) => {
         </div>
       </nav>
       { isLoading && <Loader type="ball-clip-rotate" />}
+
     </>
   );
 };

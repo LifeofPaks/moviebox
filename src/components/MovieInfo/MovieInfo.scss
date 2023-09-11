@@ -20,23 +20,17 @@
         padding: 1rem;
     }
 
-    @include Tablet{
-
-    }
-    
-    @include Mobile{
-    
-    }
-
     .poster{
         width: 100%;
 
         @include Tablet{
             height: 400px;
+            object-fit: cover;
         }
         
         @include Mobile{
         height: 300px;
+        object-fit: cover;
         }
     }
 

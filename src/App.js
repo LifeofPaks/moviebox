@@ -28,8 +28,9 @@ function App() {
         setIsLoading(false);
         setSelectedMovies(results[0]);
       } catch (e) {
-        setError(`${e.message}`);
+        setError(`Movie not available`);
         setMovies([]);
+        setIsLoading(false)
       }
     };
 
@@ -47,6 +48,7 @@ function App() {
         setIsLoading={setIsLoading}
         selectedMovies={selectedMovies}
         isLoading={isLoading}
+        error={error}
       />
 
       <section className="main">
@@ -58,7 +60,10 @@ function App() {
               movie={movie}
               setSelectedMovies={setSelectedMovies}
               setShowDetails={setShowDetails}
+              isLoading={isLoading}
+              error={error}
               />
+              
               ))}
         </div>
       </section>

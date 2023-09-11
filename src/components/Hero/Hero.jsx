@@ -3,7 +3,7 @@ import "./Hero.scss";
 import NavBar from "../NavBar/NavBar";
 
 
-const Hero = ({ movies, setMovies, setError, selectedMovies, isLoading, setIsLoading }) => {
+const Hero = ({ movies, setMovies, setError, selectedMovies, isLoading, setIsLoading, error }) => {
   const IMAGE_PATH = `https://image.tmdb.org/t/p/original`;
 
   return (
@@ -12,7 +12,7 @@ const Hero = ({ movies, setMovies, setError, selectedMovies, isLoading, setIsLoa
       style={{ backgroundImage: `url('${IMAGE_PATH}${selectedMovies.backdrop_path}')` }}
       
     >
-      <NavBar movies={movies} setMovies={setMovies} setError={setError} setIsLoading={setIsLoading} isLoading={isLoading}/>
+      <NavBar movies={movies} setMovies={setMovies} setError={setError} error={error} setIsLoading={setIsLoading} isLoading={isLoading}/>
       {!isLoading ? (
         <div className="movieDetails">
           <h1 className="title">{selectedMovies.title}</h1>

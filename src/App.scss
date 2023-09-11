@@ -13,6 +13,9 @@ body{
     font-family: 'DM Sans', sans-serif;
 
 }
+a{
+    text-decoration: none;
+}
 
 button, input{
     border: none;
@@ -54,7 +57,7 @@ li{
     padding: 5rem 2rem;
 
     @include Tablet{
-        padding: 2rem 2rem;
+        padding: 1rem 2rem;
     }
 
     @include Mobile{
@@ -71,10 +74,12 @@ li{
 
         @include Tablet{
             grid-template-columns: repeat(2, 1fr);
+            padding-inline: 2rem;
         }
 
         @include Mobile{
             grid-template-columns: repeat(1, 1fr);
+            padding-inline: 1rem;
         }
         
         
