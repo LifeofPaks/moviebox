@@ -1,0 +1,9 @@
+@import '../styles/Responsive.scss';
+
+.movieCard{
+    cursor: pointer;
+    img{
+        width: 250px;
+        height: 370px;
+    }
+}

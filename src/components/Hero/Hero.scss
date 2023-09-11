@@ -1,0 +1,59 @@
+@import '../styles/Responsive.scss';
+
+.hero{
+    padding-inline: 7%;
+    height: 600px;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    &.black{
+        background: #000;
+    }
+
+    .movieDetails{
+        backdrop-filter: blur(2px);
+        width: fit-content;
+        
+    .title{
+        color: #fff;
+        margin-top: 1rem;
+        font-size: 48px;
+    }
+    .overview{
+        width: 400px;
+        color: #fff;
+        margin-top: 1rem;
+        font-size: 15px;
+        line-height: 25px;
+    }
+
+    .trailer{
+        background: #BE123C;
+        color: #fff;
+
+        display: flex;
+        align-items: center;
+        margin-top: 1rem;
+        gap: 8px;
+        padding: 6px 16px;
+        border-radius: 6px;
+
+        img{
+            width: 20px;
+        }
+    }
+
+        .left{
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            .text{
+                color: #fff;
+                font-size: 12px;
+            }
+
+    }
+    }
+
+}
