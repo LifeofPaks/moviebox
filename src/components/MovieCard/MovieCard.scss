@@ -59,14 +59,17 @@
     }
   }
   .more {
-    padding: 0.5rem 1rem;
-    background: #fff;
-    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+    height: 25px;
+    width: 25px;
+    display: grid;
+    place-content: center;
+    background: #302f2f71;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.469);
     position: absolute;
     z-index: 100;
-    bottom: 1rem;
+    top: 1rem;
     right: 1rem;
-    border-radius: 10px;
+    border-radius: 50%;
     font-size: 12px;
   }
 

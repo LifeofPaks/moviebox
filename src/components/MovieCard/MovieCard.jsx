@@ -1,17 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import "./MovieCard.scss";
 
 const MovieCard = ({ movie, setSelectedMovies, setShowDetails, isLoading, error }) => {
+
+  const [isFavorite, setIsFavorite] = useState(false)
 
   const IMAGE_PATH = "https://image.tmdb.org/t/p/w500";
   const handleMovieDetails = () =>{
     setShowDetails(true)
     setSelectedMovies(movie)
   }
-  return ( !isLoading && movie ?
+  return ( 
     <div className="card">
       
-    <div className="movieCard" onClick={() => setSelectedMovies(movie)}  data-testid= 'movie-card'>
+    <div className="movieCard" onClick={handleMovieDetails} data-testid= 'movie-card'>
       {movie.poster_path ? (
         <img src={`${IMAGE_PATH}${movie.poster_path}`} alt="poster" data-testid= 'movie-poster' className="poster"/>
       ) : (
@@ -34,8 +36,11 @@ const MovieCard = ({ movie, setSelectedMovies, setShowDetails, isLoading, error 
       </div>
   
     </div>
-      <button onClick={handleMovieDetails} className="more">More details</button>
-    </div> : ''
+      <button onClick={() => setIsFavorite(!isFavorite)} className="more">
+
+      <img width="16"src={isFavorite ? "https://img.icons8.com/ios-glyphs/90/be123c/like--v1.png"  : "https://img.icons8.com/ios-glyphs/90/FFFFFF/like--v1.png" } alt="like--v1"/>
+      </button>
+    </div>
   );
 };
 
