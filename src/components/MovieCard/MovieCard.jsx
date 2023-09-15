@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import "./MovieCard.scss";
+import { Link } from "react-router-dom";
 
-const MovieCard = ({ movie, setSelectedMovies, setShowDetails, isLoading, error }) => {
+const MovieCard = ({ movie, setSelectedMovies, setShowDetails }) => {
 
   const [isFavorite, setIsFavorite] = useState(false)
 
@@ -11,9 +12,9 @@ const MovieCard = ({ movie, setSelectedMovies, setShowDetails, isLoading, error 
     setSelectedMovies(movie)
   }
   return ( 
-    <div className="card">
+    <div className="card" >
       
-    <div className="movieCard" onClick={handleMovieDetails} data-testid= 'movie-card'>
+    <Link to={`/MovieInfo/${movie.id}`} className="movieCard" onClick={handleMovieDetails} data-testid= 'movie-card'>
       {movie.poster_path ? (
         <img src={`${IMAGE_PATH}${movie.poster_path}`} alt="poster" data-testid= 'movie-poster' className="poster"/>
       ) : (
@@ -35,7 +36,7 @@ const MovieCard = ({ movie, setSelectedMovies, setShowDetails, isLoading, error 
       <p className="releaseDate" data-testid= 'movie-release-date'>{movie.release_date}</p>
       </div>
   
-    </div>
+    </Link>
       <button onClick={() => setIsFavorite(!isFavorite)} className="more">
 
       <img width="16"src={isFavorite ? "https://img.icons8.com/ios-glyphs/90/be123c/like--v1.png"  : "https://img.icons8.com/ios-glyphs/90/FFFFFF/like--v1.png" } alt="like--v1"/>

@@ -7,6 +7,8 @@ import Loader from "react-loaders";
 import MovieCard from "./components/MovieCard/MovieCard";
 import { Route, Routes } from "react-router-dom";
 import MovieInfo from "./components/MovieInfo/MovieInfo";
+import { fetchTopMovies } from "./api";
+
 
 function App() {
   const [movies, setMovies] = useState([]);
@@ -15,33 +17,27 @@ function App() {
   const [selectedMovies, setSelectedMovies] = useState({});
   const [showDetails, setShowDetails] = useState(false)
 
-  const API_URL = `https://api.themoviedb.org/3/discover/movie?api_key=14fafd0c8dac1e1c2ab6222eeb3a9da0`;
 
   useEffect(() => {
-    setIsLoading(true);
-    const fetchMovies = async () => {
+    async function fetchTop10Movies() {
       try {
-        const {
-          data: { results },
-        } = await axios.get(`${API_URL}`);
-        setMovies(results);
-        setIsLoading(false);
-        setSelectedMovies(results[0]);
-      } catch (e) {
-        setError(`Movie not available`);
-        setMovies([]);
-        setIsLoading(false)
+        const data = await fetchTopMovies();
+        setMovies(data.results.slice(0, 10));
+        console.log(data.results[0])
+        setSelectedMovies(data.results[0]);
+      } catch (error) {
+        console.error("Error fetching top movies:", error);
       }
-    };
+    }
 
-    setTimeout(() => {
-      fetchMovies();
-    }, 2000);
+
+    fetchTop10Movies();
   }, []);
 
-  return (
-    <main className="App">
-      <Hero
+  const Layout = () =>{
+    return(
+      <>
+       <Hero
         movies={movies}
         setMovies={setMovies}
         setError={setError}
@@ -67,8 +63,15 @@ function App() {
               ))}
         </div>
       </section>
+      </>
+    )
+  }
 
-        <MovieInfo
+  return (
+    <main className="App">
+        <Routes>
+          <Route path="/" element ={<Layout/>}/>
+          <Route path="/MovieInfo/:id" element={  <MovieInfo
            movies={movies}
            setMovies={setMovies}
            setError={setError}
@@ -77,7 +80,10 @@ function App() {
            isLoading={isLoading}
            showDetails={showDetails}
            setShowDetails={setShowDetails}
-        />
+        />}/>
+        </Routes>
+
+      
     </main>
   );
 }
